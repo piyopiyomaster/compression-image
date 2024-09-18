@@ -4,18 +4,7 @@ function handleFileInput(event) {
     const file = event.target.files[0];
     if (!file) return;
 
-    // 元のファイルサイズを表示
-    const originalSize = (file.size / 1024).toFixed(2); // KBに変換
-    document.getElementById('originalSize').textContent = `${originalSize} KB`;
-    console.log(`元のファイルサイズ: ${originalSize} KB`);
-
     compressImage(file, 0.5).then(compressedFile => {
-
-        // 圧縮後のファイルサイズを表示
-        const compressedSize = (compressedFile.size / 1024).toFixed(2); // KBに変換
-        document.getElementById('compressedSize').textContent = `${compressedSize} KB`;
-        console.log(`圧縮後のファイルサイズ: ${compressedSize} KB`);
-        
         displayImage(compressedFile);
     });
 }
